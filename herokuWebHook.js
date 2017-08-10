@@ -17,16 +17,21 @@ bot.onText(/\/start/, (msg) => {
 
   bot.sendMessage(msg.chat.id, "Welcome", {
   "reply_markup": {
-      "keyboard": [["Sample text", "Second sample"],   ["Keyboard"], ["I'm robot"]]
-      }
+    "keyboard": [["x2", "x3"], ["Keyboard"], ["I'm robot"]],
+    }
   });
 
 });
 
+const duplicate = (value) => value * 2;
+
 bot.on('message', (msg) => {
-  const Hi = "hi";
+  const Hi = "x2";
   if (msg.text.toLowerCase().indexOf(Hi) === 0) {
-      bot.sendMessage(msg.chat.id, "Hello dear user");
+    bot.sendMessage(msg.chat.id, "Enter a number to duplicate");
+    bot.onReplyToMessage(msg.chat.id, msg.message_id, () => {
+      duplicate(parseInt(msg.chat.text));
+    });
   }
   const bye = "bye";
   if (msg.text.toLowerCase().includes(bye)) {
