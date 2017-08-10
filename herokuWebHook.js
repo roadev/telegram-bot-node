@@ -24,7 +24,7 @@ bot.onText(/\/start/, (msg) => {
 
 });
 
-const duplicate = (value) => value * 2;
+const double = (value) => value * 2;
 
 const triple = (value) => value * 3;
 
