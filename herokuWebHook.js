@@ -26,17 +26,30 @@ bot.onText(/\/start/, (msg) => {
 
 const duplicate = (value) => value * 2;
 
+const triple = (value) => value * 3;
+
 bot.on('message', (msg) => {
-  const Hi = "x2";
-  if (msg.text.toLowerCase().indexOf(Hi) === 0) {
-    bot.sendMessage(msg.chat.id, "Enter a number to duplicate").then(() => {
+  const x2 = "x2";
+  const x3 = "x3";
+  if (msg.text.toLowerCase().indexOf(x2) === 0) {
+    bot.sendMessage(msg.chat.id, "Enter a number to double").then(() => {
       bot.once('message', answer => {
         const res = answer.text;
-        const result = duplicate(parseInt(res));
+        const result = double(parseInt(res));
         bot.sendMessage(msg.chat.id, result);
         return result;
       });
+    });
+  }
 
+  if (msg.text.toLowerCase().indexOf(x3) === 0) {
+    bot.sendMessage(msg.chat.id, "Enter a number to triple").then(() => {
+      bot.once('message', answer => {
+        const res = answer.text;
+        const result = triple(parseInt(res));
+        bot.sendMessage(msg.chat.id, result);
+        return result;
+      });
     });
   }
   const bye = "bye";
