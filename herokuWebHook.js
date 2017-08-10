@@ -5,7 +5,8 @@ require('isomorphic-fetch');
 const options = {
   webHook: {
     port: process.env.PORT
-  }
+  },
+  polling: true,
 };
 
 const url = process.env.APP_URL || '<URL>:443';
@@ -28,8 +29,7 @@ const duplicate = (value) => value * 2;
 bot.on('message', (msg) => {
   const Hi = "x2";
   if (msg.text.toLowerCase().indexOf(Hi) === 0) {
-    bot.sendMessage(msg.chat.id, "Enter a number to duplicate");
-    bot.onReplyToMessage(msg.chat.id, msg.message_id, () => {
+    bot.sendMessage(msg.chat.id, "Enter a number to duplicate").then(() => {
       duplicate(parseInt(msg.chat.text));
     });
   }
