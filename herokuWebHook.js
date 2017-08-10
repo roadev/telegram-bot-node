@@ -30,7 +30,7 @@ bot.on('message', (msg) => {
   const Hi = "x2";
   if (msg.text.toLowerCase().indexOf(Hi) === 0) {
     bot.sendMessage(msg.chat.id, "Enter a number to duplicate").then(() => {
-      duplicate(parseInt(msg.chat.text));
+      bot.sendMessage(msg.chat.id, duplicate(parseInt(msg.chat.text)));
     });
   }
   const bye = "bye";
