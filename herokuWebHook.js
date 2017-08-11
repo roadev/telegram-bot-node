@@ -42,6 +42,6 @@ bot.on('message', async (msg) => {
 
   const price = await getData(msg.text.toLowerCase());
   msg.text.toLowerCase() === 'last' || msg.text.toLowerCase() === 'high' || msg.text.toLowerCase() === 'low' ?
-    bot.sendMessage(msg.chat.id, `<b>${msg.text.toLowerCase()}:</b> ${price} USD`) : null;
+    bot.sendMessage(msg.chat.id, `*${msg.text.toLowerCase()}:* ${price} USD`, {parse_mode : "Markdown"}) : null;
 
 });
