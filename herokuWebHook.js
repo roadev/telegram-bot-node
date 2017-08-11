@@ -41,5 +41,5 @@ const getData = async (option) => {
 bot.on('message', (msg) => {
   const text = msg.text.toLowerCase();
   text === 'low' || text === 'high' || text === 'last' ?
-    getData(msg.text.toLowerCase()) : null;
+    getData(msg) : null;
 });
