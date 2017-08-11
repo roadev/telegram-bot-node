@@ -19,7 +19,7 @@ bot.setWebHook(`${url}/bot${TOKEN}`);
 
 bot.onText(/\/start/, (msg) => {
 
-  bot.sendMessage(msg.chat.id, "Welcome", {
+  bot.sendMessage(msg.chat.id, "Check the BTC price :D", {
   "reply_markup": {
     "keyboard": [["last"], ["low", "high"]],
     }
@@ -41,33 +41,7 @@ const getData = async (option) => {
 bot.on('message', async (msg) => {
 
   const price = await getData(msg.text.toLowerCase());
-  bot.sendMessage(msg.chat.id, `${msg.text.toLowerCase()}: ${price}`);
-
-  // switch (msg.text.toLowerCase()) {
-  //   case 'last':
-  //     const price = getData();
-  //     bot.sendMessage(msg.chat.id, `Last BTC price: ${price}`)
-  //     // .then(() => {
-  //     //   bot.once('message', answer => {
-  //     //     const res = answer.text;
-  //     //     const result = double(parseInt(res));
-  //     //     bot.sendMessage(msg.chat.id, result);
-  //     //     return result;
-  //     //   });
-  //     // });
-  //     break;
-  //   case 2:
-  //     bot.sendMessage(msg.chat.id, "Enter a number to triple")
-  //     // .then(() => {
-  //     //   bot.once('message', answer => {
-  //     //     const res = answer.text;
-  //     //     const result = triple(parseInt(res));
-  //     //     bot.sendMessage(msg.chat.id, result);
-  //     //     return result;
-  //     //   });
-  //     // });
-  //   default:
-  //     bot.sendMessage(msg.chat.id, "Invalid command, please try again");
-  // }
+  msg.text.toLowerCase() === 'last' || msg.text.toLowerCase() === 'high' msg.text.toLowerCase() === 'low' ?
+    bot.sendMessage(msg.chat.id, `<b>${msg.text.toLowerCase()}:</b> ${price} USD`) : null;
 
 });
