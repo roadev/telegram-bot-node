@@ -6,7 +6,6 @@ const options = {
   webHook: {
     port: process.env.PORT
   },
-  polling: true,
 };
 
 // "keyboard": [["last BTC price": 1], ["lowest": 2, "highest": 3]],
@@ -33,15 +32,14 @@ const getData = async (option) => {
     const parsedData = await data.json();
     console.log(parsedData[option]);
     return parsedData[option];
+    bot.sendMessage(msg.chat.id, `*${msg.text.toLowerCase()}:* ${parsedData[option]} USD`, {parse_mode : "Markdown"});
   } catch (error) {
     console.log(error);
   }
 }
 
-bot.on('message', async (msg) => {
-
-  const price = await getData(msg.text.toLowerCase());
-  msg.text.toLowerCase() === 'last' || msg.text.toLowerCase() === 'high' || msg.text.toLowerCase() === 'low' ?
-    bot.sendMessage(msg.chat.id, `*${msg.text.toLowerCase()}:* ${price} USD`, {parse_mode : "Markdown"}) : null;
-
+bot.on('message', (msg) => {
+  const text = msg.text.toLowerCase();
+  text === 'low' || text === 'high' || text === 'last' ?
+    getData(msg.text.toLowerCase()) : null;
 });
