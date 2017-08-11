@@ -30,9 +30,9 @@ const getData = async (msg) => {
   try {
     const data = await fetch(apiUrl);
     const parsedData = await data.json();
-    console.log(parsedData[option]);
-    bot.sendMessage(msg.chat.id, `*${msg.text.toLowerCase()}:* ${parsedData[option]} USD`, {parse_mode : "Markdown"});
-    return parsedData[option];
+    console.log(parsedData[msg.text.toLowerCase()]);
+    bot.sendMessage(msg.chat.id, `*${msg.text.toLowerCase()}:* ${parsedData[msg.text.toLowerCase()]} USD`, {parse_mode : "Markdown"});
+    return parsedData[msg.text.toLowerCase()];
   } catch (error) {
     console.log(error);
   }
