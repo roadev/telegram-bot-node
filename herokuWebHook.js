@@ -21,7 +21,7 @@ bot.onText(/\/start/, (msg) => {
 
   bot.sendMessage(msg.chat.id, "Welcome", {
   "reply_markup": {
-    "keyboard": [["last": 'last'], ["lowest": 'low', "highest": 'high']],
+    "keyboard": [["last"], ["low", "high"]],
     }
   });
 
