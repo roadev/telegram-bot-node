@@ -38,9 +38,9 @@ const getData = async (option) => {
   }
 }
 
-bot.on('message', (msg) => {
+bot.on('message', async (msg) => {
 
-  const price = getData(msg.text.toLowerCase());
+  const price = await getData(msg.text.toLowerCase());
   bot.sendMessage(msg.chat.id, `${msg.text.toLowerCase()}: ${price}`);
 
   // switch (msg.text.toLowerCase()) {
