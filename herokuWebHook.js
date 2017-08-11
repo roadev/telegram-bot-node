@@ -26,7 +26,7 @@ bot.onText(/\/start/, (msg) => {
 
 });
 
-const getData = async (option) => {
+const getData = async (msg) => {
   try {
     const data = await fetch(apiUrl);
     const parsedData = await data.json();
